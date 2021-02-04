@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F618F3425C2E7DF00D1D6DE /* iextension_manager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F618F3225C2E7DF00D1D6DE /* iextension_manager.h */; };
+		3F618F3525C2E7DF00D1D6DE /* iextension.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F618F3325C2E7DF00D1D6DE /* iextension.h */; };
+		F5BB947125CA84FD00F043C4 /* iextension_mediaapply_delegate.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BB946D25CA84FD00F043C4 /* iextension_mediaapply_delegate.h */; };
+		F5BB947225CA84FD00F043C4 /* iextension_delegate_compatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BB946E25CA84FD00F043C4 /* iextension_delegate_compatibility.h */; };
+		F5BB947325CA84FD00F043C4 /* iextension_media_listener.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BB946F25CA84FD00F043C4 /* iextension_media_listener.h */; };
+		F5BB947425CA84FD00F043C4 /* iextension_mediastream_delegate.h in Headers */ = {isa = PBXBuildFile; fileRef = F5BB947025CA84FD00F043C4 /* iextension_mediastream_delegate.h */; };
+		F5BB949625CA89BD00F043C4 /* rtc_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB948425CA86A300F043C4 /* rtc_sdk.framework */; };
+		F5BB949A25CA89BD00F043C4 /* xes_rtc_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB948325CA86A300F043C4 /* xes_rtc_sdk.framework */; };
+		F5BB949B25CA89BD00F043C4 /* xes_rtc_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB948325CA86A300F043C4 /* xes_rtc_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5BB949C25CA89BD00F043C4 /* xes_webrtc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB948725CA86A300F043C4 /* xes_webrtc.framework */; };
+		F5BB949D25CA89BD00F043C4 /* xes_webrtc.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB948725CA86A300F043C4 /* xes_webrtc.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5BB94A225CA8BF500F043C4 /* CoreWLAN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB94A125CA8BF500F043C4 /* CoreWLAN.framework */; };
+		F5BB94A425CA8BFC00F043C4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB94A325CA8BFC00F043C4 /* AVFoundation.framework */; };
+		F5BB94A625CA8C0400F043C4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB94A525CA8C0400F043C4 /* AudioToolbox.framework */; };
+		F5BB94A825CA8C0A00F043C4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB94A725CA8C0A00F043C4 /* CoreMedia.framework */; };
+		F5BB94AA25CA8C0E00F043C4 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB94A925CA8C0E00F043C4 /* CoreAudio.framework */; };
+		F5BB94AC25CA8C1400F043C4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB94AB25CA8C1400F043C4 /* SystemConfiguration.framework */; };
+		F5BB94AE25CA8C1A00F043C4 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB94AD25CA8C1A00F043C4 /* VideoToolbox.framework */; };
+		F5BB94B025CA8C2100F043C4 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB94AF25CA8C2100F043C4 /* Accelerate.framework */; };
+		F5BB94B825CA8D4300F043C4 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB94B225CA8C3100F043C4 /* libresolv.tbd */; };
+		F5BB94B925CA8D4D00F043C4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB94B125CA8C2800F043C4 /* libc++.tbd */; };
+		F5BB94BB25CA8D8200F043C4 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB94BA25CA8D8200F043C4 /* AppKit.framework */; };
+		F5BB94BD25CA8E8100F043C4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB94BC25CA8E7E00F043C4 /* libz.tbd */; };
+		F5BB94C825CA98ED00F043C4 /* TTTRtcSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB948625CA86A300F043C4 /* TTTRtcSDK.framework */; };
+		F5BB94C925CA98ED00F043C4 /* TTTRtcSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB948625CA86A300F043C4 /* TTTRtcSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5BB94CE25CAA20600F043C4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB949F25CA8B0400F043C4 /* OpenGL.framework */; };
+		F5BB94CF25CAA5ED00F043C4 /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5BB948525CA86A300F043C4 /* AgoraRtcEngineKit.framework */; };
+		F5D78AB925CC239B00D15659 /* extension_impl.cc in Sources */ = {isa = PBXBuildFile; fileRef = F5D78AA725CC239B00D15659 /* extension_impl.cc */; };
+		F5D78ABA25CC239B00D15659 /* device_manager_extension.cc in Sources */ = {isa = PBXBuildFile; fileRef = F5D78AA825CC239B00D15659 /* device_manager_extension.cc */; };
+		F5D78ABB25CC239B00D15659 /* extension_context.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D78AA925CC239B00D15659 /* extension_context.h */; };
+		F5D78ABC25CC239B00D15659 /* extension_impl.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D78AAA25CC239B00D15659 /* extension_impl.h */; };
+		F5D78ABD25CC239B00D15659 /* extension_export.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D78AAB25CC239B00D15659 /* extension_export.h */; };
+		F5D78ABE25CC239B00D15659 /* main_entry.cc in Sources */ = {isa = PBXBuildFile; fileRef = F5D78AAC25CC239B00D15659 /* main_entry.cc */; };
+		F5D78ABF25CC239B00D15659 /* rtc_engine_extension.cc in Sources */ = {isa = PBXBuildFile; fileRef = F5D78AAD25CC239B00D15659 /* rtc_engine_extension.cc */; };
+		F5D78AC025CC239B00D15659 /* lock.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D78AAF25CC239B00D15659 /* lock.h */; };
+		F5D78AC125CC239B00D15659 /* lock.cc in Sources */ = {isa = PBXBuildFile; fileRef = F5D78AB025CC239B00D15659 /* lock.cc */; };
+		F5D78AC225CC239B00D15659 /* json11.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F5D78AB225CC239B00D15659 /* json11.hpp */; };
+		F5D78AC325CC239B00D15659 /* json11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5D78AB325CC239B00D15659 /* json11.cpp */; };
+		F5D78AC425CC239B00D15659 /* extension_context.cc in Sources */ = {isa = PBXBuildFile; fileRef = F5D78AB425CC239B00D15659 /* extension_context.cc */; };
+		F5D78AC525CC239B00D15659 /* device_manager_extension.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D78AB525CC239B00D15659 /* device_manager_extension.h */; };
+		F5D78AC625CC239B00D15659 /* main_entry.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D78AB625CC239B00D15659 /* main_entry.h */; };
+		F5D78AC725CC239B00D15659 /* event_notify_template.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D78AB725CC239B00D15659 /* event_notify_template.h */; };
+		F5D78AC825CC239B00D15659 /* rtc_engine_extension.h in Headers */ = {isa = PBXBuildFile; fileRef = F5D78AB825CC239B00D15659 /* rtc_engine_extension.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F5BB949E25CA89BD00F043C4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F5BB949D25CA89BD00F043C4 /* xes_webrtc.framework in Embed Frameworks */,
+				F5BB949B25CA89BD00F043C4 /* xes_rtc_sdk.framework in Embed Frameworks */,
+				F5BB94C925CA98ED00F043C4 /* TTTRtcSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3F618F0425C2E79200D1D6DE /* librtc_extension.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = librtc_extension.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F618F3225C2E7DF00D1D6DE /* iextension_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iextension_manager.h; sourceTree = "<group>"; };
+		3F618F3325C2E7DF00D1D6DE /* iextension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iextension.h; sourceTree = "<group>"; };
+		F5BB946D25CA84FD00F043C4 /* iextension_mediaapply_delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iextension_mediaapply_delegate.h; sourceTree = "<group>"; };
+		F5BB946E25CA84FD00F043C4 /* iextension_delegate_compatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iextension_delegate_compatibility.h; sourceTree = "<group>"; };
+		F5BB946F25CA84FD00F043C4 /* iextension_media_listener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iextension_media_listener.h; sourceTree = "<group>"; };
+		F5BB947025CA84FD00F043C4 /* iextension_mediastream_delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iextension_mediastream_delegate.h; sourceTree = "<group>"; };
+		F5BB948325CA86A300F043C4 /* xes_rtc_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = xes_rtc_sdk.framework; path = ../../third_party/mac/xes_rtc_sdk.framework; sourceTree = "<group>"; };
+		F5BB948425CA86A300F043C4 /* rtc_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = rtc_sdk.framework; path = ../../third_party/mac/rtc_sdk.framework; sourceTree = "<group>"; };
+		F5BB948525CA86A300F043C4 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcEngineKit.framework; path = ../../third_party/mac/AgoraRtcEngineKit.framework; sourceTree = "<group>"; };
+		F5BB948625CA86A300F043C4 /* TTTRtcSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TTTRtcSDK.framework; path = ../../third_party/mac/TTTRtcSDK.framework; sourceTree = "<group>"; };
+		F5BB948725CA86A300F043C4 /* xes_webrtc.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = xes_webrtc.framework; path = ../../third_party/mac/xes_webrtc.framework; sourceTree = "<group>"; };
+		F5BB949F25CA8B0400F043C4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		F5BB94A125CA8BF500F043C4 /* CoreWLAN.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreWLAN.framework; path = System/Library/Frameworks/CoreWLAN.framework; sourceTree = SDKROOT; };
+		F5BB94A325CA8BFC00F043C4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F5BB94A525CA8C0400F043C4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F5BB94A725CA8C0A00F043C4 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		F5BB94A925CA8C0E00F043C4 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		F5BB94AB25CA8C1400F043C4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F5BB94AD25CA8C1A00F043C4 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		F5BB94AF25CA8C2100F043C4 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		F5BB94B125CA8C2800F043C4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		F5BB94B225CA8C3100F043C4 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		F5BB94B325CA8C6300F043C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F5BB94B525CA8C7300F043C4 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		F5BB94BA25CA8D8200F043C4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F5BB94BC25CA8E7E00F043C4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		F5D78AA725CC239B00D15659 /* extension_impl.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = extension_impl.cc; sourceTree = "<group>"; };
+		F5D78AA825CC239B00D15659 /* device_manager_extension.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = device_manager_extension.cc; sourceTree = "<group>"; };
+		F5D78AA925CC239B00D15659 /* extension_context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extension_context.h; sourceTree = "<group>"; };
+		F5D78AAA25CC239B00D15659 /* extension_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extension_impl.h; sourceTree = "<group>"; };
+		F5D78AAB25CC239B00D15659 /* extension_export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extension_export.h; sourceTree = "<group>"; };
+		F5D78AAC25CC239B00D15659 /* main_entry.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main_entry.cc; sourceTree = "<group>"; };
+		F5D78AAD25CC239B00D15659 /* rtc_engine_extension.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rtc_engine_extension.cc; sourceTree = "<group>"; };
+		F5D78AAF25CC239B00D15659 /* lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lock.h; sourceTree = "<group>"; };
+		F5D78AB025CC239B00D15659 /* lock.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lock.cc; sourceTree = "<group>"; };
+		F5D78AB225CC239B00D15659 /* json11.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json11.hpp; sourceTree = "<group>"; };
+		F5D78AB325CC239B00D15659 /* json11.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json11.cpp; sourceTree = "<group>"; };
+		F5D78AB425CC239B00D15659 /* extension_context.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = extension_context.cc; sourceTree = "<group>"; };
+		F5D78AB525CC239B00D15659 /* device_manager_extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = device_manager_extension.h; sourceTree = "<group>"; };
+		F5D78AB625CC239B00D15659 /* main_entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main_entry.h; sourceTree = "<group>"; };
+		F5D78AB725CC239B00D15659 /* event_notify_template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = event_notify_template.h; sourceTree = "<group>"; };
+		F5D78AB825CC239B00D15659 /* rtc_engine_extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtc_engine_extension.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F618F0225C2E79200D1D6DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5BB94CF25CAA5ED00F043C4 /* AgoraRtcEngineKit.framework in Frameworks */,
+				F5BB949C25CA89BD00F043C4 /* xes_webrtc.framework in Frameworks */,
+				F5BB94B025CA8C2100F043C4 /* Accelerate.framework in Frameworks */,
+				F5BB94B825CA8D4300F043C4 /* libresolv.tbd in Frameworks */,
+				F5BB94BB25CA8D8200F043C4 /* AppKit.framework in Frameworks */,
+				F5BB94CE25CAA20600F043C4 /* OpenGL.framework in Frameworks */,
+				F5BB94A825CA8C0A00F043C4 /* CoreMedia.framework in Frameworks */,
+				F5BB94BD25CA8E8100F043C4 /* libz.tbd in Frameworks */,
+				F5BB94B925CA8D4D00F043C4 /* libc++.tbd in Frameworks */,
+				F5BB94A625CA8C0400F043C4 /* AudioToolbox.framework in Frameworks */,
+				F5BB94A225CA8BF500F043C4 /* CoreWLAN.framework in Frameworks */,
+				F5BB94AC25CA8C1400F043C4 /* SystemConfiguration.framework in Frameworks */,
+				F5BB949A25CA89BD00F043C4 /* xes_rtc_sdk.framework in Frameworks */,
+				F5BB94AE25CA8C1A00F043C4 /* VideoToolbox.framework in Frameworks */,
+				F5BB94A425CA8BFC00F043C4 /* AVFoundation.framework in Frameworks */,
+				F5BB94AA25CA8C0E00F043C4 /* CoreAudio.framework in Frameworks */,
+				F5BB94C825CA98ED00F043C4 /* TTTRtcSDK.framework in Frameworks */,
+				F5BB949625CA89BD00F043C4 /* rtc_sdk.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F618EFB25C2E79200D1D6DE = {
+			isa = PBXGroup;
+			children = (
+				3F618F3025C2E7DF00D1D6DE /* include */,
+				F5D78AA625CC239B00D15659 /* rtc */,
+				3F618F0525C2E79200D1D6DE /* Products */,
+				F5BB948225CA86A200F043C4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3F618F0525C2E79200D1D6DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F618F0425C2E79200D1D6DE /* librtc_extension.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F618F3025C2E7DF00D1D6DE /* include */ = {
+			isa = PBXGroup;
+			children = (
+				3F618F3125C2E7DF00D1D6DE /* public */,
+			);
+			name = include;
+			path = ../../include;
+			sourceTree = "<group>";
+		};
+		3F618F3125C2E7DF00D1D6DE /* public */ = {
+			isa = PBXGroup;
+			children = (
+				F5BB946E25CA84FD00F043C4 /* iextension_delegate_compatibility.h */,
+				F5BB946F25CA84FD00F043C4 /* iextension_media_listener.h */,
+				F5BB946D25CA84FD00F043C4 /* iextension_mediaapply_delegate.h */,
+				F5BB947025CA84FD00F043C4 /* iextension_mediastream_delegate.h */,
+				3F618F3225C2E7DF00D1D6DE /* iextension_manager.h */,
+				3F618F3325C2E7DF00D1D6DE /* iextension.h */,
+			);
+			path = public;
+			sourceTree = "<group>";
+		};
+		F5BB948225CA86A200F043C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F5BB94BC25CA8E7E00F043C4 /* libz.tbd */,
+				F5BB94BA25CA8D8200F043C4 /* AppKit.framework */,
+				F5BB94B525CA8C7300F043C4 /* CoreFoundation.framework */,
+				F5BB94B325CA8C6300F043C4 /* Foundation.framework */,
+				F5BB94B225CA8C3100F043C4 /* libresolv.tbd */,
+				F5BB94B125CA8C2800F043C4 /* libc++.tbd */,
+				F5BB94AF25CA8C2100F043C4 /* Accelerate.framework */,
+				F5BB94AD25CA8C1A00F043C4 /* VideoToolbox.framework */,
+				F5BB94AB25CA8C1400F043C4 /* SystemConfiguration.framework */,
+				F5BB94A925CA8C0E00F043C4 /* CoreAudio.framework */,
+				F5BB94A725CA8C0A00F043C4 /* CoreMedia.framework */,
+				F5BB94A525CA8C0400F043C4 /* AudioToolbox.framework */,
+				F5BB94A325CA8BFC00F043C4 /* AVFoundation.framework */,
+				F5BB94A125CA8BF500F043C4 /* CoreWLAN.framework */,
+				F5BB949F25CA8B0400F043C4 /* OpenGL.framework */,
+				F5BB948525CA86A300F043C4 /* AgoraRtcEngineKit.framework */,
+				F5BB948425CA86A300F043C4 /* rtc_sdk.framework */,
+				F5BB948625CA86A300F043C4 /* TTTRtcSDK.framework */,
+				F5BB948325CA86A300F043C4 /* xes_rtc_sdk.framework */,
+				F5BB948725CA86A300F043C4 /* xes_webrtc.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F5D78AA625CC239B00D15659 /* rtc */ = {
+			isa = PBXGroup;
+			children = (
+				F5D78AA725CC239B00D15659 /* extension_impl.cc */,
+				F5D78AA825CC239B00D15659 /* device_manager_extension.cc */,
+				F5D78AA925CC239B00D15659 /* extension_context.h */,
+				F5D78AAA25CC239B00D15659 /* extension_impl.h */,
+				F5D78AAB25CC239B00D15659 /* extension_export.h */,
+				F5D78AAC25CC239B00D15659 /* main_entry.cc */,
+				F5D78AAD25CC239B00D15659 /* rtc_engine_extension.cc */,
+				F5D78AAE25CC239B00D15659 /* common */,
+				F5D78AB125CC239B00D15659 /* json */,
+				F5D78AB425CC239B00D15659 /* extension_context.cc */,
+				F5D78AB525CC239B00D15659 /* device_manager_extension.h */,
+				F5D78AB625CC239B00D15659 /* main_entry.h */,
+				F5D78AB725CC239B00D15659 /* event_notify_template.h */,
+				F5D78AB825CC239B00D15659 /* rtc_engine_extension.h */,
+			);
+			name = rtc;
+			path = ../rtc;
+			sourceTree = "<group>";
+		};
+		F5D78AAE25CC239B00D15659 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				F5D78AAF25CC239B00D15659 /* lock.h */,
+				F5D78AB025CC239B00D15659 /* lock.cc */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		F5D78AB125CC239B00D15659 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				F5D78AB225CC239B00D15659 /* json11.hpp */,
+				F5D78AB325CC239B00D15659 /* json11.cpp */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3F618F0025C2E79200D1D6DE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F618F3425C2E7DF00D1D6DE /* iextension_manager.h in Headers */,
+				F5BB947125CA84FD00F043C4 /* iextension_mediaapply_delegate.h in Headers */,
+				F5BB947325CA84FD00F043C4 /* iextension_media_listener.h in Headers */,
+				F5BB947425CA84FD00F043C4 /* iextension_mediastream_delegate.h in Headers */,
+				F5D78AC625CC239B00D15659 /* main_entry.h in Headers */,
+				F5D78ABC25CC239B00D15659 /* extension_impl.h in Headers */,
+				F5D78AC825CC239B00D15659 /* rtc_engine_extension.h in Headers */,
+				F5D78AC025CC239B00D15659 /* lock.h in Headers */,
+				F5D78AC525CC239B00D15659 /* device_manager_extension.h in Headers */,
+				F5D78ABD25CC239B00D15659 /* extension_export.h in Headers */,
+				F5D78ABB25CC239B00D15659 /* extension_context.h in Headers */,
+				F5D78AC725CC239B00D15659 /* event_notify_template.h in Headers */,
+				F5D78AC225CC239B00D15659 /* json11.hpp in Headers */,
+				F5BB947225CA84FD00F043C4 /* iextension_delegate_compatibility.h in Headers */,
+				3F618F3525C2E7DF00D1D6DE /* iextension.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3F618F0325C2E79200D1D6DE /* rtc_extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F618F0F25C2E79200D1D6DE /* Build configuration list for PBXNativeTarget "rtc_extension" */;
+			buildPhases = (
+				3F618F0025C2E79200D1D6DE /* Headers */,
+				3F618F0125C2E79200D1D6DE /* Sources */,
+				3F618F0225C2E79200D1D6DE /* Frameworks */,
+				F5BB949E25CA89BD00F043C4 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rtc_extension;
+			productName = rtc_extension;
+			productReference = 3F618F0425C2E79200D1D6DE /* librtc_extension.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F618EFC25C2E79200D1D6DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					3F618F0325C2E79200D1D6DE = {
+						CreatedOnToolsVersion = 12.1;
+					};
+				};
+			};
+			buildConfigurationList = 3F618EFF25C2E79200D1D6DE /* Build configuration list for PBXProject "rtc_extension" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3F618EFB25C2E79200D1D6DE;
+			productRefGroup = 3F618F0525C2E79200D1D6DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F618F0325C2E79200D1D6DE /* rtc_extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F618F0125C2E79200D1D6DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5D78AC425CC239B00D15659 /* extension_context.cc in Sources */,
+				F5D78AC125CC239B00D15659 /* lock.cc in Sources */,
+				F5D78AB925CC239B00D15659 /* extension_impl.cc in Sources */,
+				F5D78ABF25CC239B00D15659 /* rtc_engine_extension.cc in Sources */,
+				F5D78AC325CC239B00D15659 /* json11.cpp in Sources */,
+				F5D78ABA25CC239B00D15659 /* device_manager_extension.cc in Sources */,
+				F5D78ABE25CC239B00D15659 /* main_entry.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3F618F0D25C2E79200D1D6DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SYMROOT = ../../bin;
+			};
+			name = Debug;
+		};
+		3F618F0E25C2E79200D1D6DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SYMROOT = ../../bin;
+			};
+			name = Release;
+		};
+		3F618F1025C2E79200D1D6DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = ../../third_party/mac;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = EXTENSION_IMPLEMENTATION;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				HEADER_SEARCH_PATHS = ../../include;
+				OTHER_CODE_SIGN_FLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYMROOT = ../../bin;
+			};
+			name = Debug;
+		};
+		3F618F1125C2E79200D1D6DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXCLUDED_ARCHS = arm64;
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = ../../third_party/mac;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = EXTENSION_IMPLEMENTATION;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				HEADER_SEARCH_PATHS = ../../include;
+				OTHER_CODE_SIGN_FLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SYMROOT = ../../bin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F618EFF25C2E79200D1D6DE /* Build configuration list for PBXProject "rtc_extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F618F0D25C2E79200D1D6DE /* Debug */,
+				3F618F0E25C2E79200D1D6DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F618F0F25C2E79200D1D6DE /* Build configuration list for PBXNativeTarget "rtc_extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F618F1025C2E79200D1D6DE /* Debug */,
+				3F618F1125C2E79200D1D6DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3F618EFC25C2E79200D1D6DE /* Project object */;
+}

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\public">
+      <UniqueIdentifier>{21af7d22-6ba7-4392-b5f9-8d07616b202b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\common">
+      <UniqueIdentifier>{7f134000-7060-4f4b-b6c9-f4062de0cc29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\json">
+      <UniqueIdentifier>{7ed8e43d-8005-4b19-b7a9-c7bfec7e7810}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\public\iextension.h">
+      <Filter>源文件\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\public\iextension_manager.h">
+      <Filter>源文件\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\rtc\common\lock.h">
+      <Filter>源文件\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\rtc\extension_context.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\rtc\extension_export.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\rtc\extension_impl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\rtc\event_notify_template.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\rtc\main_entry.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\public\iextension_media_listener.h">
+      <Filter>源文件\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\public\iextension_mediaapply_delegate.h">
+      <Filter>源文件\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\public\iextension_mediastream_delegate.h">
+      <Filter>源文件\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\public\iextension_delegate_compatibility.h">
+      <Filter>源文件\public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\rtc\json\json11.hpp">
+      <Filter>源文件\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\rtc\rtc_engine_extension.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\rtc\device_manager_extension.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\rtc\common\lock.cc">
+      <Filter>源文件\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rtc\extension_context.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rtc\extension_impl.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rtc\main_entry.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rtc\json\json11.cpp">
+      <Filter>源文件\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rtc\rtc_engine_extension.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\rtc\device_manager_extension.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
