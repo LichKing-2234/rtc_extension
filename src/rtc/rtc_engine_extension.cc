@@ -724,7 +724,7 @@ void RtcEngineExtension::OnCallMethod_muteRemoteVideo(
     owcr::extension::IExtensionMethodCallback *callback) {
   std::string error;
   auto json = Json::parse(params.c_str(), error);
-  auto uid = json["uid"].number_value();
+  auto uid = static_cast<rtc::UserId>(json["uid"].int_value());
   auto mute = json["mute"].bool_value();
   rtc_engine_->muteRemoteVideo(uid, mute);
   callback->OnMethodSucceed("", 0);
@@ -735,7 +735,7 @@ void RtcEngineExtension::OnCallMethod_muteRemoteAudio(
     owcr::extension::IExtensionMethodCallback *callback) {
   std::string error;
   auto json = Json::parse(params.c_str(), error);
-  auto uid = json["uid"].number_value();
+  auto uid = static_cast<rtc::UserId>(json["uid"].int_value());
   auto mute = json["mute"].bool_value();
   rtc_engine_->muteRemoteAudio(uid, mute);
   callback->OnMethodSucceed("", 0);
@@ -766,7 +766,7 @@ void RtcEngineExtension::OnCallMethod_setRemoteVolume(
     owcr::extension::IExtensionMethodCallback *callback) {
   std::string error;
   auto json = Json::parse(params.c_str(), error);
-  auto uid = json["uid"].number_value();
+  auto uid = static_cast<rtc::UserId>(json["uid"].int_value());
   auto volume = json["volume"].int_value();
   auto channelId = json["channelId"].string_value();
   rtc_engine_->setRemoteVolume(uid, volume, channelId.c_str());
@@ -802,7 +802,7 @@ void RtcEngineExtension::OnCallMethod_setRemoteRenderMode(
     owcr::extension::IExtensionMethodCallback *callback) {
   std::string error;
   auto json = Json::parse(params.c_str(), error);
-  auto uid = json["uid"].number_value();
+  auto uid = static_cast<rtc::UserId>(json["uid"].int_value());
   auto mode = json["mode"].int_value();
   rtc_engine_->setRemoteRenderMode(uid, (rtc::RTC_VIDEO_RENDER_MODE)mode);
   callback->OnMethodSucceed("", 0);
@@ -838,8 +838,8 @@ void RtcEngineExtension::OnCallMethod_setAudioRecordedParam(
     owcr::extension::IExtensionMethodCallback *callback) {
   std::string error;
   auto json = Json::parse(params.c_str(), error);
-  auto sampleRate = json["sampleRate"].number_value();
-  auto nChannel = json["nChannel"].number_value();
+  auto sampleRate = static_cast<unsigned>(json["sampleRate"].int_value());
+  auto nChannel = static_cast<unsigned>(json["nChannel"].int_value());
   auto nIntervalTime = json["nIntervalTime"].int_value();
   rtc_engine_->setAudioRecordedParam(sampleRate, nChannel, nIntervalTime);
   callback->OnMethodSucceed("", 0);
@@ -939,7 +939,7 @@ void RtcEngineExtension::OnCallMethod_sendSeiTimestamp(
     owcr::extension::IExtensionMethodCallback *callback) {
   std::string error;
   auto json = Json::parse(params.c_str(), error);
-  auto seiTime = json["seiTime"].number_value();
+  auto seiTime = static_cast<unsigned>(json["seiTime"].number_value());
   auto ret = rtc_engine_->sendSeiTimestamp(seiTime);
   if (ret) {
     callback->OnMethodSucceed("", 0);
@@ -974,11 +974,11 @@ void RtcEngineExtension::OnCallMethod_setLiveTranscoding(
   config.videoBitrate = json_config["videoBitrate"].int_value();
   config.videoFramerate = json_config["videoFramerate"].int_value();
   config.videoGop = json_config["videoGop"].int_value();
-  config.backgroundColor = json_config["backgroundColor"].number_value();
+  config.backgroundColor = static_cast<unsigned>(json_config["backgroundColor"].int_value());
 
   for (auto &item : json_config["transcodingUsers"].array_items()) {
     rtc::Stru_RtmpTranscodingUser user;
-    user.uid = item["uid"].number_value();
+    user.uid = static_cast<rtc::UserId>(item["uid"].int_value());
     user.x = item["x"].int_value();
     user.y = item["y"].int_value();
     user.width = item["width"].int_value();
@@ -1007,7 +1007,7 @@ void RtcEngineExtension::OnCallMethod_setLiveTranscoding(
   backgroundImage.height = json_backgroundImage["height"].int_value();
   config.backgroundImage = &backgroundImage;
 
-  config.audioSampleRate = json_config["audioSampleRate"].number_value();
+  config.audioSampleRate = static_cast<unsigned>(json_config["audioSampleRate"].int_value());
   config.audioBitrate = json_config["audioBitrate"].int_value();
   config.audioChannels = json_config["audioChannels"].int_value();
   auto ret = rtc_engine_->setLiveTranscoding(config);
@@ -1052,7 +1052,7 @@ void RtcEngineExtension::OnCallMethod_setServerTimestamp(
     owcr::extension::IExtensionMethodCallback *callback) {
   std::string error;
   auto json = Json::parse(params.c_str(), error);
-  auto timestampMs = json["timestampMs"].number_value();
+  auto timestampMs = json["timestampMs"].int64_value();
   auto ret = rtc_engine_->setServerTimestamp(timestampMs);
   if (ret) {
     callback->OnMethodSucceed("", 0);
@@ -1067,7 +1067,7 @@ void RtcEngineExtension::OnCallMethod_enableAutoTimestamp(
   std::string error;
   auto json = Json::parse(params.c_str(), error);
   auto enable = json["enable"].bool_value();
-  auto freq = json["freq"].number_value();
+  auto freq = static_cast<float>(json["freq"].number_value());
   auto ret = rtc_engine_->enableAutoTimestamp(enable, freq);
   if (ret) {
     callback->OnMethodSucceed("", 0);
@@ -1096,7 +1096,7 @@ void RtcEngineExtension::OnCallMethod_setAVSyncSource(
   std::string error;
   auto json = Json::parse(params.c_str(), error);
   auto channelId = json["channelId"].string_value().c_str();
-  auto uid = json["uid"].number_value();
+  auto uid = static_cast<rtc::UserId>(json["uid"].int_value());
   auto ret = rtc_engine_->setAVSyncSource(channelId, uid);
   if (ret == rtc::RTC_SUCCESS) {
     callback->OnMethodSucceed("", 0);
@@ -1138,7 +1138,7 @@ void RtcEngineExtension::OnCallMethod_setRemoteVideoStreamType(
     owcr::extension::IExtensionMethodCallback *callback) {
   std::string error;
   auto json = Json::parse(params.c_str(), error);
-  auto uid = json["uid"].number_value();
+  auto uid = static_cast<rtc::UserId>(json["uid"].int_value());
   auto streamType = json["streamType"].int_value();
   auto ret = rtc_engine_->setRemoteVideoStreamType(
       uid, (rtc::REMOTE_VIDEO_STREAM_TYPE)streamType);
@@ -1164,7 +1164,7 @@ void RtcEngineExtension::OnCallMethod_setVideoFps(
     owcr::extension::IExtensionMethodCallback *callback) {
   std::string error;
   auto json = Json::parse(params.c_str(), error);
-  auto videoFps = json["videoFps"].number_value();
+  auto videoFps = static_cast<unsigned>(json["videoFps"].int_value());
   rtc_engine_->setVideoFps(videoFps);
   callback->OnMethodSucceed("", 0);
 }

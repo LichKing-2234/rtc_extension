@@ -57,9 +57,6 @@
     <ClInclude Include="..\..\include\public\iextension_mediastream_delegate.h">
       <Filter>源文件\public</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\public\iextension_delegate_compatibility.h">
-      <Filter>源文件\public</Filter>
-    </ClInclude>
     <ClInclude Include="..\rtc\json\json11.hpp">
       <Filter>源文件\json</Filter>
     </ClInclude>

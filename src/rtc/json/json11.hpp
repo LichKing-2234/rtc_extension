@@ -55,6 +55,7 @@
 #include <map>
 #include <memory>
 #include <initializer_list>
+#include <stdlib.h>
 
 #ifdef _MSC_VER
     #if _MSC_VER <= 1800 // VS 2013
@@ -69,7 +70,16 @@
 #endif
 
 namespace json11 {
-
+  // add by jCrazy
+#if defined(_MSC_VER) // Microsoft Visual Studio
+  typedef __int64 Int64;
+  typedef unsigned __int64 UInt64;
+#define astoi64(val)  _atoi64(val)  
+#else                 // if defined(_MSC_VER) // Other platforms, use long long
+  typedef int64_t Int64;
+  typedef uint64_t UInt64;
+#define astoi64(val) strtoll(val,nullptr,10)
+#endif // if defined(_MSC_VER)
 enum JsonParse {
     STANDARD, COMMENTS
 };
@@ -92,6 +102,8 @@ public:
     Json(std::nullptr_t) noexcept;  // NUL
     Json(double value);             // NUMBER
     Json(int value);                // NUMBER
+    // add by jCrazy
+    Json(Int64 value);              // NUMBER
     Json(bool value);               // BOOL
     Json(const std::string &value); // STRING
     Json(std::string &&value);      // STRING
@@ -137,7 +149,8 @@ public:
     // can both be applied to a NUMBER-typed object.
     double number_value() const;
     int int_value() const;
-
+    // add by jCrazy
+    Int64 int64_value() const;
     // Return the enclosed value if this is a boolean, false otherwise.
     bool bool_value() const;
     // Return the enclosed string if this is a string, "" otherwise.
@@ -214,12 +227,15 @@ protected:
     friend class Json;
     friend class JsonInt;
     friend class JsonDouble;
+    friend class JsonInt64;
     virtual Json::Type type() const = 0;
     virtual bool equals(const JsonValue * other) const = 0;
     virtual bool less(const JsonValue * other) const = 0;
     virtual void dump(std::string &out) const = 0;
     virtual double number_value() const;
     virtual int int_value() const;
+    // add by jCrazy
+    virtual Int64 int64_value() const;
     virtual bool bool_value() const;
     virtual const std::string &string_value() const;
     virtual const Json::array &array_items() const;

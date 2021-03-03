@@ -119,7 +119,7 @@ void DeviceManagerExtension::OnCallMethod_setCurDevice(
   std::string error;
   auto json = Json::parse(params.c_str(), error);
   auto deviceType = json["deviceType"].int_value();
-  auto deviceIndex = json["deviceIndex"].number_value();
+  auto deviceIndex = static_cast<unsigned>(json["deviceIndex"].int_value());
   auto ret = false;
   switch (deviceType) {
   case 0: {
@@ -178,7 +178,7 @@ void DeviceManagerExtension::OnCallMethod_getDevice(
   std::string error;
   auto json = Json::parse(params.c_str(), error);
   auto deviceType = json["deviceType"].int_value();
-  auto nIndex = json["nIndex"].number_value();
+  auto nIndex = static_cast<unsigned>(json["nIndex"].int_value());
   char deviceName[rtc::MAX_DEVICE_ID_LENGTH];
   char deviceId[rtc::MAX_DEVICE_ID_LENGTH];
   auto ret = false;
@@ -242,7 +242,7 @@ void DeviceManagerExtension::OnCallMethod_setVolume(
   std::string error;
   auto json = Json::parse(params.c_str(), error);
   auto deviceType = json["deviceType"].int_value();
-  auto nVol = json["nVol"].number_value();
+  auto nVol = static_cast<unsigned>(json["nVol"].int_value());
   auto ret = false;
   switch (deviceType) {
   case 0: {

@@ -25,9 +25,14 @@
 #include <cstdlib>
 #include <cstdio>
 #include <limits>
+#include <math.h>
 
 namespace json11 {
-
+// add by jCrazy
+const Int64 minInt64 = Int64(~(UInt64(-1) / 2));
+const Int64 maxInt64 = Int64(UInt64(-1) / 2);
+const int minInt = int(~((unsigned int)(-1) / 2));
+const int maxInt = int((unsigned int)(-1) / 2);
 static const int max_depth = 200;
 
 using std::string;
@@ -68,6 +73,11 @@ static void dump(int value, string &out) {
     char buf[32];
     snprintf(buf, sizeof buf, "%d", value);
     out += buf;
+}
+
+// add by jCrazy
+static void dump(Int64 value, string &out) {
+  out += std::to_string(value);
 }
 
 static void dump(bool value, string &out) {
@@ -171,9 +181,17 @@ protected:
 };
 
 class JsonDouble final : public Value<Json::NUMBER, double> {
+#define EPS (1e-6)
     double number_value() const override { return m_value; }
     int int_value() const override { return static_cast<int>(m_value); }
-    bool equals(const JsonValue * other) const override { return m_value == other->number_value(); }
+    // add by jCrazy
+    Int64 int64_value() const override { return static_cast<Int64>(m_value); }
+    bool equals(const JsonValue * other) const override {
+		if (fabs(m_value- other->number_value()) < EPS) {
+			return true;
+		}
+		return false; 
+	}
     bool less(const JsonValue * other)   const override { return m_value <  other->number_value(); }
 public:
     explicit JsonDouble(double value) : Value(value) {}
@@ -182,10 +200,23 @@ public:
 class JsonInt final : public Value<Json::NUMBER, int> {
     double number_value() const override { return m_value; }
     int int_value() const override { return m_value; }
-    bool equals(const JsonValue * other) const override { return m_value == other->number_value(); }
-    bool less(const JsonValue * other)   const override { return m_value <  other->number_value(); }
+    // add by jCrazy
+    Int64 int64_value() const override { return static_cast<Int64>(m_value); }
+    bool equals(const JsonValue * other) const override { return m_value == other->int_value(); }
+    bool less(const JsonValue * other)   const override { return m_value <  other->int_value(); }
 public:
     explicit JsonInt(int value) : Value(value) {}
+};
+
+// add by jCrazy
+class JsonInt64 final : public Value<Json::NUMBER, Int64> {
+  double number_value() const override { return static_cast<double>(m_value); }
+  int int_value() const override { return static_cast<int>(m_value); }
+  Int64 int64_value() const override { return m_value; }
+  bool equals(const JsonValue * other) const override { return m_value == other->int64_value(); }
+  bool less(const JsonValue * other)   const override { return m_value < other->int64_value(); }
+public:
+  explicit JsonInt64(Int64 value) : Value(value) {}
 };
 
 class JsonBoolean final : public Value<Json::BOOL, bool> {
@@ -254,6 +285,8 @@ Json::Json() noexcept                  : m_ptr(statics().null) {}
 Json::Json(std::nullptr_t) noexcept    : m_ptr(statics().null) {}
 Json::Json(double value)               : m_ptr(make_shared<JsonDouble>(value)) {}
 Json::Json(int value)                  : m_ptr(make_shared<JsonInt>(value)) {}
+// add by jCrazy
+Json::Json(Int64 value)                : m_ptr(make_shared<JsonInt64>(value)) {}
 Json::Json(bool value)                 : m_ptr(value ? statics().t : statics().f) {}
 Json::Json(const string &value)        : m_ptr(make_shared<JsonString>(value)) {}
 Json::Json(string &&value)             : m_ptr(make_shared<JsonString>(move(value))) {}
@@ -270,6 +303,8 @@ Json::Json(Json::object &&values)      : m_ptr(make_shared<JsonObject>(move(valu
 Json::Type Json::type()                           const { return m_ptr->type();         }
 double Json::number_value()                       const { return m_ptr->number_value(); }
 int Json::int_value()                             const { return m_ptr->int_value();    }
+// add by jCrazy
+Int64 Json::int64_value()                         const { return m_ptr->int64_value(); }
 bool Json::bool_value()                           const { return m_ptr->bool_value();   }
 const string & Json::string_value()               const { return m_ptr->string_value(); }
 const vector<Json> & Json::array_items()          const { return m_ptr->array_items();  }
@@ -279,6 +314,8 @@ const Json & Json::operator[] (const string &key) const { return (*m_ptr)[key]; 
 
 double                    JsonValue::number_value()              const { return 0; }
 int                       JsonValue::int_value()                 const { return 0; }
+// add by jCrazy
+Int64                     JsonValue::int64_value()               const { return 0; }
 bool                      JsonValue::bool_value()                const { return false; }
 const string &            JsonValue::string_value()              const { return statics().empty_string; }
 const vector<Json> &      JsonValue::array_items()               const { return statics().empty_vector; }
@@ -572,9 +609,13 @@ struct JsonParser final {
      */
     Json parse_number() {
         size_t start_pos = i;
-
-        if (str[i] == '-')
-            i++;
+		// add by jCrazy
+		long long number_result = 0;
+		bool plus = true;
+		if (str[i] == '-') {
+			plus = false;
+			i++;
+		}
 
         // Integer part
         if (str[i] == '0') {
@@ -582,17 +623,39 @@ struct JsonParser final {
             if (in_range(str[i], '0', '9'))
                 return fail("leading 0s not permitted in numbers");
         } else if (in_range(str[i], '1', '9')) {
+			number_result = number_result * 10 + (plus ? 1 : -1)*(str[i] - '0');
             i++;
-            while (in_range(str[i], '0', '9'))
-                i++;
+			while (in_range(str[i], '0', '9')) {
+				number_result = number_result * 10 + (plus ? 1 : -1)*(str[i] - '0');
+				i++;
+			}
         } else {
             return fail("invalid " + esc(str[i]) + " in number");
         }
 
+        // modify by jCrazy(support Int64)
+#if 0
         if (str[i] != '.' && str[i] != 'e' && str[i] != 'E'
-                && (i - start_pos) <= static_cast<size_t>(std::numeric_limits<int>::digits10)) {
-            return std::atoi(str.c_str() + start_pos);
+          && (i - start_pos) <= static_cast<size_t>(std::numeric_limits<int>::digits10)) {
+          return std::atoi(str.c_str() + start_pos);
         }
+#else
+        if (str[i] != '.' && str[i] != 'e' && str[i] != 'E')  {
+			do  {
+				if ((i - start_pos - (plus?0:1)) <= (static_cast<size_t>(std::numeric_limits<int>::digits10) + 1)) {
+					// int
+					if (number_result <= maxInt && minInt <= number_result)  {
+						return std::atoi(str.c_str() + start_pos);
+					}
+					break;
+				}
+			} while (false);
+          if ((i - start_pos - (plus ? 0 : 1)) <= (static_cast<size_t>(std::numeric_limits<long long>::digits10) + 1))  {
+            // Int64
+            return astoi64(str.c_str() + start_pos);
+          }   
+        }
+#endif
 
         // Decimal part
         if (str[i] == '.') {

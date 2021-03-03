@@ -1,6 +1,6 @@
 #ifndef LIB_OWCR_EXTENSION_PUBLIC_IEXTENSION_MEDIA_LISTENER_
 #define LIB_OWCR_EXTENSION_PUBLIC_IEXTENSION_MEDIA_LISTENER_
-#include "iextension_mediastream_delegate.h"
+
 class IExtensionMediaListener {
 public:
     IExtensionMediaListener() {}

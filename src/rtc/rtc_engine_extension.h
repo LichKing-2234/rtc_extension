@@ -6,6 +6,7 @@
 #include "IRTCEngine.h"
 #endif
 #include "extension_context.h"
+#include "public/iextension_mediastream_delegate.h"
 #include "public/iextension_media_listener.h"
 #include <map>
 
