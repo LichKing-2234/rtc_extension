@@ -1,6 +1,8 @@
 #ifndef LIB_OWCR_EXTENSION_PUBLIC_IEXTENSION_MEDIASTREAM_DELEGATE_
 #define LIB_OWCR_EXTENSION_PUBLIC_IEXTENSION_MEDIASTREAM_DELEGATE_
 
+#include "iextension_delegate_compatibility.h"
+
 namespace owcr
 {
 namespace extension
@@ -62,7 +64,7 @@ enum VideoPixelFormat {
   PIXEL_FORMAT_Y16,  // Must always be equal to largest entry logged.
 };
 
-class IExtensionMediaStreamDelegate {
+class IExtensionMediaStreamDelegate : public IExtensionDelegateCompatibility {
 public:
   IExtensionMediaStreamDelegate(){}
   virtual ~IExtensionMediaStreamDelegate() {}

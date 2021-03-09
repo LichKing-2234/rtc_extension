@@ -3,13 +3,14 @@
 
 #include <set>
 #include <mutex>
+#include "iextension_delegate_compatibility.h"
 
 class IExtensionMediaListener;
 namespace owcr
 {
   namespace extension
   {
-    class IExtensionMediaApplyDelegate {
+    class IExtensionMediaApplyDelegate : public IExtensionDelegateCompatibility {
     public:
       IExtensionMediaApplyDelegate() {}
       virtual ~IExtensionMediaApplyDelegate() {}

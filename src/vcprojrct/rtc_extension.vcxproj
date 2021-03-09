@@ -138,6 +138,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\public\iextension.h" />
+    <ClInclude Include="..\..\include\public\iextension_delegate_compatibility.h" />
     <ClInclude Include="..\..\include\public\iextension_manager.h" />
     <ClInclude Include="..\..\include\public\iextension_mediaapply_delegate.h" />
     <ClInclude Include="..\..\include\public\iextension_mediastream_delegate.h" />
