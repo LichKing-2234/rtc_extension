@@ -27,7 +27,7 @@ public:
         (unsigned char *)videoFrame.vBuffer, videoFrame.yStride,
         videoFrame.uStride, videoFrame.vStride, videoFrame.width,
         videoFrame.height, 24, videoFrame.rotation, videoFrame.renderTimeMs);
-    return false;
+    return true;
   }
 
   virtual bool onRenderVideoFrame(rtc::UserId uid,
@@ -40,7 +40,7 @@ public:
         (unsigned char *)videoFrame.vBuffer, videoFrame.yStride,
         videoFrame.uStride, videoFrame.vStride, videoFrame.width,
         videoFrame.height, 24, videoFrame.rotation, videoFrame.renderTimeMs);
-    return false;
+    return true;
   }
 
 private:
