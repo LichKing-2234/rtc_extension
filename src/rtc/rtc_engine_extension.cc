@@ -277,6 +277,7 @@ public:
              {"rxAudioKBitRate", (double)stats.txBytes},
              {"rxAudioKBitRate", (double)stats.rxBytes},
              {"rxAudioKBitRate", (int)stats.lastmileDelay},
+             {"gatewayRtt", stats.gatewayRtt},
          }},
     };
     std::string result = json.dump();
@@ -458,6 +459,26 @@ public:
                                      result.c_str(), result.length());
   }
 
+  void onLocalVideoStats(const rtc::LocalVideoStats stats) {
+    std::string event_name = "LocalVideoStats";
+    Json json = Json::object{
+        {"stats",
+         Json::object{
+             {"sentBitrate", stats.sentBitrate},
+             {"sentFrameRate", stats.sentFrameRate},
+             {"videoEncodeFps", stats.videoEncodeFps},
+             {"targetBitrate", stats.targetBitrate},
+             {"targetFrameRate", stats.targetFrameRate},
+             {"encodedFrameWidth", stats.encodedFrameWidth},
+             {"encodedFrameHeight", stats.encodedFrameHeight},
+             {"captureFrameRate", stats.captureFrameRate},
+         }},
+    };
+    std::string result = json.dump();
+    context_->EventNotify()->OnEvent(event_name.c_str(), event_name.length(),
+                                     result.c_str(), result.length());
+  }
+
 private:
   ExtensionContext *context_;
 };
@@ -556,6 +577,9 @@ void RtcEngineExtension::InitHandlerMap() {
   DEFINE_CALL_METHOD(adjustRecordingSignalVolume);
   DEFINE_CALL_METHOD(enableDualStreamMode);
   DEFINE_CALL_METHOD(setRemoteVideoStreamType);
+  DEFINE_CALL_METHOD(adjustPlaybackSignalVolume);
+  DEFINE_CALL_METHOD(setBusinessUserRole);
+  DEFINE_CALL_METHOD(setContentInspectExtraConfig);
 }
 
 void RtcEngineExtension::CallMethod(
@@ -974,7 +998,8 @@ void RtcEngineExtension::OnCallMethod_setLiveTranscoding(
   config.videoBitrate = json_config["videoBitrate"].int_value();
   config.videoFramerate = json_config["videoFramerate"].int_value();
   config.videoGop = json_config["videoGop"].int_value();
-  config.backgroundColor = static_cast<unsigned>(json_config["backgroundColor"].int_value());
+  config.backgroundColor =
+      static_cast<unsigned>(json_config["backgroundColor"].int_value());
 
   for (auto &item : json_config["transcodingUsers"].array_items()) {
     rtc::Stru_RtmpTranscodingUser user;
@@ -1007,7 +1032,8 @@ void RtcEngineExtension::OnCallMethod_setLiveTranscoding(
   backgroundImage.height = json_backgroundImage["height"].int_value();
   config.backgroundImage = &backgroundImage;
 
-  config.audioSampleRate = static_cast<unsigned>(json_config["audioSampleRate"].int_value());
+  config.audioSampleRate =
+      static_cast<unsigned>(json_config["audioSampleRate"].int_value());
   config.audioBitrate = json_config["audioBitrate"].int_value();
   config.audioChannels = json_config["audioChannels"].int_value();
   auto ret = rtc_engine_->setLiveTranscoding(config);
@@ -1142,6 +1168,54 @@ void RtcEngineExtension::OnCallMethod_setRemoteVideoStreamType(
   auto streamType = json["streamType"].int_value();
   auto ret = rtc_engine_->setRemoteVideoStreamType(
       uid, (rtc::REMOTE_VIDEO_STREAM_TYPE)streamType);
+  if (ret == rtc::RTC_SUCCESS) {
+    callback->OnMethodSucceed("", 0);
+  } else {
+    callback->OnMethodError(ret, "", 0);
+  }
+}
+
+void RtcEngineExtension::OnCallMethod_adjustPlaybackSignalVolume(
+    const std::string &params,
+    owcr::extension::IExtensionMethodCallback *callback) {
+  std::string error;
+  auto json = Json::parse(params.c_str(), error);
+  auto volume = json["volume"].int_value();
+  auto ret = rtc_engine_->adjustPlaybackSignalVolume(volume);
+  if (ret == rtc::RTC_SUCCESS) {
+    callback->OnMethodSucceed("", 0);
+  } else {
+    callback->OnMethodError(ret, "", 0);
+  }
+}
+
+void RtcEngineExtension::OnCallMethod_setBusinessUserRole(
+    const std::string &params,
+    owcr::extension::IExtensionMethodCallback *callback) {
+  std::string error;
+  auto json = Json::parse(params.c_str(), error);
+  auto role = json["role"].int_value();
+  auto ret = rtc_engine_->setBusinessUserRole((rtc::BUSI_USER_ROLE)role);
+  if (ret == rtc::RTC_SUCCESS) {
+    callback->OnMethodSucceed("", 0);
+  } else {
+    callback->OnMethodError(ret, "", 0);
+  }
+}
+
+void RtcEngineExtension::OnCallMethod_setContentInspectExtraConfig(
+    const std::string &params,
+    owcr::extension::IExtensionMethodCallback *callback) {
+  std::string error;
+  auto json = Json::parse(params.c_str(), error);
+  auto extInfo = json["extInfo"].string_value();
+  std::vector<int> featureRate;
+  for (auto &item : json["featureRate"].array_items()) {
+    featureRate.push_back(item.int_value());
+  }
+  auto ret = rtc_engine_->setContentInspectExtraConfig(
+      const_cast<char *>(extInfo.c_str()), featureRate.data(),
+      featureRate.size());
   if (ret == rtc::RTC_SUCCESS) {
     callback->OnMethodSucceed("", 0);
   } else {

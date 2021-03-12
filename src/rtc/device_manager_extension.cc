@@ -37,6 +37,8 @@ void DeviceManagerExtension::InitHandlerMap() {
   DEFINE_CALL_METHOD(getDevice);
   DEFINE_CALL_METHOD(getVolume);
   DEFINE_CALL_METHOD(setVolume);
+  DEFINE_CALL_METHOD(startDeviceTest);
+  DEFINE_CALL_METHOD(stopDeviceTest);
 }
 
 void DeviceManagerExtension::CallMethod(
@@ -255,6 +257,64 @@ void DeviceManagerExtension::OnCallMethod_setVolume(
   }
   case 2: {
     ret = rtc_engine_->getNewMicManager()->setVolume(nVol);
+    break;
+  }
+  }
+  if (ret) {
+    callback->OnMethodSucceed("", 0);
+  } else {
+    callback->OnMethodError(rtc::RTC_FAILED, "", 0);
+  }
+}
+
+void DeviceManagerExtension::OnCallMethod_startDeviceTest(
+    const std::string &params,
+    owcr::extension::IExtensionMethodCallback *callback) {
+  std::string error;
+  auto json = Json::parse(params.c_str(), error);
+  auto deviceType = json["deviceType"].int_value();
+  auto ret = false;
+  switch (deviceType) {
+  case 0: {
+    callback->OnMethodError(rtc::RTC_ERR_NOT_SUPPORTED, "", 0);
+    return;
+  }
+  case 1: {
+    callback->OnMethodError(rtc::RTC_ERR_NOT_SUPPORTED, "", 0);
+    return;
+  }
+  case 2: {
+    auto indicationInterval = json["indicationInterval"].int_value();
+    ret = rtc_engine_->getNewMicManager()->startRecordingDeviceTest(
+        indicationInterval);
+    break;
+  }
+  }
+  if (ret) {
+    callback->OnMethodSucceed("", 0);
+  } else {
+    callback->OnMethodError(rtc::RTC_FAILED, "", 0);
+  }
+}
+
+void DeviceManagerExtension::OnCallMethod_stopDeviceTest(
+    const std::string &params,
+    owcr::extension::IExtensionMethodCallback *callback) {
+  std::string error;
+  auto json = Json::parse(params.c_str(), error);
+  auto deviceType = json["deviceType"].int_value();
+  auto ret = false;
+  switch (deviceType) {
+  case 0: {
+    callback->OnMethodError(rtc::RTC_ERR_NOT_SUPPORTED, "", 0);
+    return;
+  }
+  case 1: {
+    callback->OnMethodError(rtc::RTC_ERR_NOT_SUPPORTED, "", 0);
+    return;
+  }
+  case 2: {
+    ret = rtc_engine_->getNewMicManager()->stopRecordingDeviceTest();
     break;
   }
   }

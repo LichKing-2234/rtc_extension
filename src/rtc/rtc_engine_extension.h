@@ -6,8 +6,8 @@
 #include "IRTCEngine.h"
 #endif
 #include "extension_context.h"
-#include "public/iextension_mediastream_delegate.h"
 #include "public/iextension_media_listener.h"
+#include "public/iextension_mediastream_delegate.h"
 #include <map>
 
 namespace ems {
@@ -171,6 +171,15 @@ public:
       const std::string &params,
       owcr::extension::IExtensionMethodCallback *callback);
   void OnCallMethod_setRemoteVideoStreamType(
+      const std::string &params,
+      owcr::extension::IExtensionMethodCallback *callback);
+  void OnCallMethod_adjustPlaybackSignalVolume(
+      const std::string &params,
+      owcr::extension::IExtensionMethodCallback *callback);
+  void OnCallMethod_setBusinessUserRole(
+      const std::string &params,
+      owcr::extension::IExtensionMethodCallback *callback);
+  void OnCallMethod_setContentInspectExtraConfig(
       const std::string &params,
       owcr::extension::IExtensionMethodCallback *callback);
 

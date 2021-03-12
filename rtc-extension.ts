@@ -1,9 +1,10 @@
 export namespace RtcExtension {
   const EXT_ID = "rtc_ext";
   const VERSION = "1.0.0.0";
+  let LISTENER_ID = -1;
 
   declare type RetCallback = (error: number, content: string) => void
-  declare type EventCallback = (event: number, data: string) => void
+  declare type EventCallback = (event: string, data: string) => void
 
   declare interface Device {
     deviceId: string,
@@ -15,25 +16,32 @@ export namespace RtcExtension {
 
     function UnLoad(extensionId: string, callback: RetCallback): void;
 
-    function AddListener(extensionId: string, callback: EventCallback): number;
+    function AddListener(extensionId: string, callback: EventCallback): void;
 
-    function RemoverListener(extensionId: string, listenerId: number, callback: EventCallback): number;
+    function RemoverListener(extensionId: string, listenerId: number, callback: EventCallback): void;
 
-    function CallMethod(extensionId: string, name: string, params: string, callback: RetCallback): number;
+    function CallMethod(extensionId: string, name: string, params: string, callback: RetCallback): void;
   }
 
   export function load() {
     EM.Load(EXT_ID, VERSION, true, (ec, content) => {
       console.log("Load EC:" + ec + "\nContent:" + content);
-    });
-    EM.AddListener(EXT_ID, (eventName, paramsStr) => {
-      console.log("AddListener EC:" + eventName + "\nContent:" + paramsStr);
+      EM.AddListener(EXT_ID, (ec, content) => {
+        console.log("AddListener EC:" + ec + "\nContent:" + content);
+        const res = JSON.parse(content);
+        if (res) {
+          LISTENER_ID = res[EXT_ID] ? res[EXT_ID] : -1
+        }
+      });
     });
   }
 
   export function unload() {
-    EM.UnLoad(EXT_ID, (ec, content) => {
-      console.log("unLoad EC:" + ec + "\nContent:" + content);
+    EM.RemoverListener(EXT_ID, LISTENER_ID, (ec, content) => {
+      console.log("RemoverListener EC:" + ec + "\nContent:" + content);
+      EM.UnLoad(EXT_ID, (ec, content) => {
+        console.log("UnLoad EC:" + ec + "\nContent:" + content);
+      });
     });
   }
 
@@ -635,6 +643,48 @@ export namespace RtcExtension {
     });
   }
 
+  export function adjustPlaybackSignalVolume(volume: number): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const fun_name = "engine-adjustPlaybackSignalVolume";
+      const params = {volume: volume};
+      EM.CallMethod(EXT_ID, fun_name, JSON.stringify(params), (errorCode, content) => {
+        if (errorCode === 0) {
+          resolve();
+        } else {
+          reject({code: errorCode, content: content});
+        }
+      });
+    });
+  }
+
+  export function setBusinessUserRole(role: number): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const fun_name = "engine-setBusinessUserRole";
+      const params = {role: role};
+      EM.CallMethod(EXT_ID, fun_name, JSON.stringify(params), (errorCode, content) => {
+        if (errorCode === 0) {
+          resolve();
+        } else {
+          reject({code: errorCode, content: content});
+        }
+      });
+    });
+  }
+
+  export function setContentInspectExtraConfig(extInfo: string, featureRate: number[]): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const fun_name = "engine-setContentInspectExtraConfig";
+      const params = {extInfo: extInfo, featureRate: featureRate};
+      EM.CallMethod(EXT_ID, fun_name, JSON.stringify(params), (errorCode, content) => {
+        if (errorCode === 0) {
+          resolve();
+        } else {
+          reject({code: errorCode, content: content});
+        }
+      });
+    });
+  }
+
   export function getVideoDeviceCount(): Promise<number> {
     return new Promise<number>((resolve, reject) => {
       const fun_name = "device-getDeviceCount";
@@ -891,6 +941,34 @@ export namespace RtcExtension {
     return new Promise<void>((resolve, reject) => {
       const fun_name = "device-setVolume";
       const params = {deviceType: 2, nVol: nVol};
+      EM.CallMethod(EXT_ID, fun_name, JSON.stringify(params), (errorCode, content) => {
+        if (errorCode === 0) {
+          resolve();
+        } else {
+          reject({code: errorCode, content: content});
+        }
+      });
+    });
+  }
+
+  export function startRecordingDeviceTest(indicationInterval: number): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const fun_name = "device-startDeviceTest";
+      const params = {deviceType: 2, indicationInterval: indicationInterval};
+      EM.CallMethod(EXT_ID, fun_name, JSON.stringify(params), (errorCode, content) => {
+        if (errorCode === 0) {
+          resolve();
+        } else {
+          reject({code: errorCode, content: content});
+        }
+      });
+    });
+  }
+
+  export function stopRecordingDeviceTest(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const fun_name = "device-stopDeviceTest";
+      const params = {deviceType: 2};
       EM.CallMethod(EXT_ID, fun_name, JSON.stringify(params), (errorCode, content) => {
         if (errorCode === 0) {
           resolve();

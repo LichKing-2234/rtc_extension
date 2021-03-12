@@ -6,8 +6,8 @@
 #include "IRTCEngine.h"
 #endif
 #include "extension_context.h"
-#include "public/iextension_mediastream_delegate.h"
 #include "public/iextension_media_listener.h"
+#include "public/iextension_mediastream_delegate.h"
 #include <map>
 
 namespace ems {
@@ -50,6 +50,12 @@ public:
   void
   OnCallMethod_setVolume(const std::string &params,
                          owcr::extension::IExtensionMethodCallback *callback);
+  void OnCallMethod_startDeviceTest(
+      const std::string &params,
+      owcr::extension::IExtensionMethodCallback *callback);
+  void OnCallMethod_stopDeviceTest(
+      const std::string &params,
+      owcr::extension::IExtensionMethodCallback *callback);
 
 protected:
   ExtensionContext *context_;

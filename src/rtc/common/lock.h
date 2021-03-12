@@ -2,25 +2,25 @@
 
 #include <mutex>
 
-namespace common
-{
-  class Lock {
-  public:
-    Lock();
-    ~Lock();
+namespace common {
+class Lock {
+public:
+  Lock();
+  ~Lock();
 
-    void enter();
-    void leave();
-  private:
-      std::mutex mutex_;
-  };
+  void enter();
+  void leave();
 
-  class AutoLock {
-  public:
-    AutoLock(Lock& lock);
-    ~AutoLock();
+private:
+  std::mutex mutex_;
+};
 
-  private:
-    Lock& lock_;
-  };
+class AutoLock {
+public:
+  AutoLock(Lock &lock);
+  ~AutoLock();
+
+private:
+  Lock &lock_;
+};
 } // namespace common
