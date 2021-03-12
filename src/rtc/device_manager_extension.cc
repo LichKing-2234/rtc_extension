@@ -234,8 +234,12 @@ void DeviceManagerExtension::OnCallMethod_getVolume(
     break;
   }
   }
-  auto json_ret = std::to_string(ret);
-  callback->OnMethodSucceed(json_ret.c_str(), json_ret.length());
+  if (ret >= 0) {
+    auto json_ret = std::to_string(ret);
+    callback->OnMethodSucceed(json_ret.c_str(), json_ret.length());
+  } else {
+    callback->OnMethodError(ret, "", 0);
+  }
 }
 
 void DeviceManagerExtension::OnCallMethod_setVolume(
@@ -273,7 +277,7 @@ void DeviceManagerExtension::OnCallMethod_startDeviceTest(
   std::string error;
   auto json = Json::parse(params.c_str(), error);
   auto deviceType = json["deviceType"].int_value();
-  auto ret = false;
+  int ret = 0;
   switch (deviceType) {
   case 0: {
     callback->OnMethodError(rtc::RTC_ERR_NOT_SUPPORTED, "", 0);
@@ -290,10 +294,10 @@ void DeviceManagerExtension::OnCallMethod_startDeviceTest(
     break;
   }
   }
-  if (ret) {
+  if (ret == rtc::RTC_SUCCESS) {
     callback->OnMethodSucceed("", 0);
   } else {
-    callback->OnMethodError(rtc::RTC_FAILED, "", 0);
+    callback->OnMethodError(ret, "", 0);
   }
 }
 
@@ -303,7 +307,7 @@ void DeviceManagerExtension::OnCallMethod_stopDeviceTest(
   std::string error;
   auto json = Json::parse(params.c_str(), error);
   auto deviceType = json["deviceType"].int_value();
-  auto ret = false;
+  int ret = 0;
   switch (deviceType) {
   case 0: {
     callback->OnMethodError(rtc::RTC_ERR_NOT_SUPPORTED, "", 0);
@@ -318,10 +322,10 @@ void DeviceManagerExtension::OnCallMethod_stopDeviceTest(
     break;
   }
   }
-  if (ret) {
+  if (ret == rtc::RTC_SUCCESS) {
     callback->OnMethodSucceed("", 0);
   } else {
-    callback->OnMethodError(rtc::RTC_FAILED, "", 0);
+    callback->OnMethodError(ret, "", 0);
   }
 }
 } // namespace ems
