@@ -653,6 +653,10 @@ int RtcEngineExtension::OnIncomingCapturedI420Data(
   return 0;
 }
 
+void RtcEngineExtension::OnLogMsg(const char* msg) {
+  // TODO
+}
+
 void RtcEngineExtension::OnCallMethod_initWithToken(
     const std::string &params,
     owcr::extension::IExtensionMethodCallback *callback) {
@@ -660,6 +664,7 @@ void RtcEngineExtension::OnCallMethod_initWithToken(
   auto json = Json::parse(params.c_str(), error);
   auto token = json["token"].string_value();
   auto ret = rtc_engine_->initWithToken(token.c_str());
+  rtc_engine_->registerLogFunc(RtcEngineExtension::OnLogMsg);
   if (ret == rtc::RTC_SUCCESS) {
     callback->OnMethodSucceed("", 0);
   } else {

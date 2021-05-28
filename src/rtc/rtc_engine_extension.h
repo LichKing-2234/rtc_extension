@@ -43,6 +43,7 @@ protected:
   void InitHandlerMap();
   int InitMedia();
   void UninitMedia();
+  static void OnLogMsg(const char* msg);
 
 public:
   void OnCallMethod_initWithToken(
