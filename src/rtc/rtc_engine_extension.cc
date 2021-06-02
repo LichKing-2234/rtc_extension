@@ -505,6 +505,10 @@ RtcEngineExtension::~RtcEngineExtension() {
 }
 
 void RtcEngineExtension::Initialize(ExtensionContext *context) {
+  // add by jiangxinyong
+  if (rtc_engine_)  {
+    rtc_engine_->registerLogFunc(RtcEngineExtension::OnLogMsg);
+  }
   context_ = context;
   InitHandlerMap();
   InitMedia();
@@ -1242,4 +1246,11 @@ void RtcEngineExtension::OnCallMethod_setVideoFps(
   rtc_engine_->setVideoFps(videoFps);
   callback->OnMethodSucceed("", 0);
 }
+
+// add by jiangxinyong
+void RtcEngineExtension::OnLogMsg(const char* msg) {
+  // sdk log
+  // TODO
+}
+
 } // namespace ems
